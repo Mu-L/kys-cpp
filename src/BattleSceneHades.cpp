@@ -428,8 +428,8 @@ void BattleSceneHades::dealEvent(BP_Event& e)
                 if (axis_x != 0 || axis_y != 0)
                 {
                     //fmt1::print("{} {}, ", axis_x, axis_y);
-                    axis_x = GameUtil::limit(axis_x, -30000, 30000);
-                    axis_y = GameUtil::limit(axis_y, -30000, 30000);
+                    axis_x = GameUtil::limit(axis_x, int16_t(-30000), int16_t(30000));
+                    axis_y = GameUtil::limit(axis_y, int16_t(-30000), int16_t(30000));
                     Pointf axis{ double(axis_x), double(axis_y) };
                     axis *= 1.0 / 30000 / sqrt(2.0);
                     r->RealTowards = axis;
@@ -1057,7 +1057,7 @@ void BattleSceneHades::Action(Role* r)
             int index = r->getMagicOfRoleIndex(ae.UsingMagic);
             if (index >= 0)
             {
-                r->MagicLevel[index] = GameUtil::limit(r->MagicLevel[index] + rand_.rand() * 2 + 1, 0, 999);
+                r->MagicLevel[index] = GameUtil::limit(int(r->MagicLevel[index] + rand_.rand() * 2 + 1), 0, 999);
             }
             //根据性质创造攻击效果
             if (ae.OperationType == 0)

@@ -1414,8 +1414,8 @@ void BattleScene::actAuto(Role* r)
 void BattleScene::actRest(Role* r)
 {
     r->PhysicalPower = GameUtil::limit(r->PhysicalPower + 5, 0, Role::getMaxValue()->PhysicalPower);
-    r->HP = GameUtil::limit(r->HP + 0.05 * r->MaxHP, 0, r->MaxHP);
-    r->MP = GameUtil::limit(r->MP + 0.05 * r->MaxMP, 0, r->MaxMP);
+    r->HP = GameUtil::limit(int(r->HP + 0.05 * r->MaxHP), 0, r->MaxHP);
+    r->MP = GameUtil::limit(int(r->MP + 0.05 * r->MaxMP), 0, r->MaxMP);
     r->Acted = 1;
 }
 

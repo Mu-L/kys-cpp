@@ -12,6 +12,7 @@ class GameUtil : public INIReaderNormal
 private:
     GameUtil();
     ~GameUtil();
+
 public:
     static GameUtil* getInstance()
     {
@@ -45,8 +46,8 @@ public:
     }
 
     //返回限制值
-    template <typename T, typename T2>
-    static T limit(T current, T2 min_value, T2 max_value)
+    template <typename T>
+    static T limit(T current, T min_value, T max_value)
     {
         if (current < min_value)
         {
@@ -67,12 +68,12 @@ public:
 
     static void limit2(int16_t& current, int min_value, int max_value)
     {
-        current = limit(current, min_value, max_value);
+        current = limit(int(current), min_value, max_value);
     }
 
     static void limit2(uint16_t& current, int min_value, int max_value)
     {
-        current = limit(current, min_value, max_value);
+        current = limit(int(current), min_value, max_value);
     }
 
     //计算某个数值的位数
@@ -94,5 +95,4 @@ public:
     {
         fmt1::print(stdout, args...);
     }
-
 };
